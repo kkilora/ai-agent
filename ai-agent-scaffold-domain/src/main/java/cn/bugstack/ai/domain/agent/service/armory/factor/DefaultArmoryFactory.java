@@ -8,6 +8,7 @@ import cn.bugstack.ai.domain.agent.service.armory.node.RootNode;
 import cn.bugstack.wrench.design.framework.tree.StrategyHandler;
 import lombok.*;
 import org.jvnet.hk2.annotations.Service;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.openai.api.OpenAiApi;
 
 import javax.annotation.Resource;
@@ -35,6 +36,11 @@ public class DefaultArmoryFactory{
          * LLM Api
          */
         private OpenAiApi openAiApi;
+
+        /**
+         *  LLM chatModel
+         */
+        private ChatModel chatModel;
 
         private Map<String, Object> dataObjects = new HashMap<>();
 

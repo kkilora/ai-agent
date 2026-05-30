@@ -11,10 +11,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.jvnet.hk2.annotations.Service;
 import org.springframework.ai.openai.api.OpenAiApi;
 
+import javax.annotation.Resource;
+
 @Slf4j
 @Service
 public class AiApiNode extends AbstractArmorySupport {
 
+    @Resource
+    private ChatModelNode chatModelNode;
 
     @Override
     protected AiAgentRegisterVO doApply(ArmoryCommandEntity requestParameter, DynamicContext dynamicContext) throws Exception {
@@ -38,6 +42,6 @@ public class AiApiNode extends AbstractArmorySupport {
 
     @Override
     public StrategyHandler<ArmoryCommandEntity, DynamicContext, AiAgentRegisterVO> get(ArmoryCommandEntity requestParameter, DynamicContext dynamicContext) throws Exception {
-        return defaultStrategyHandler;
+        return chatModelNode;
     }
 }
