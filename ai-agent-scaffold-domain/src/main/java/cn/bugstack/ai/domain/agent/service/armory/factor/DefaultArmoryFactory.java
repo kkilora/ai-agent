@@ -6,6 +6,7 @@ import cn.bugstack.ai.domain.agent.service.armory.AbstractArmorySupport;
 import cn.bugstack.ai.domain.agent.service.armory.node.AiApiNode;
 import cn.bugstack.ai.domain.agent.service.armory.node.RootNode;
 import cn.bugstack.wrench.design.framework.tree.StrategyHandler;
+import com.google.adk.agents.BaseAgent;
 import lombok.*;
 import org.jvnet.hk2.annotations.Service;
 import org.springframework.ai.chat.model.ChatModel;
@@ -41,6 +42,11 @@ public class DefaultArmoryFactory{
          *  LLM chatModel
          */
         private ChatModel chatModel;
+
+        /**
+         * 智能体配置组
+         */
+        private Map<String, BaseAgent> agentGroup = new HashMap<>();
 
         private Map<String, Object> dataObjects = new HashMap<>();
 

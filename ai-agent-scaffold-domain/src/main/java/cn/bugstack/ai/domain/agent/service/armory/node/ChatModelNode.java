@@ -33,6 +33,9 @@ import java.util.List;
 @Slf4j
 @Service
 public class ChatModelNode extends AbstractArmorySupport {
+
+    private AgnetNode agnetNode;
+
     @Override
     protected AiAgentRegisterVO doApply(ArmoryCommandEntity requestParameter, DefaultArmoryFactory.DynamicContext dynamicContext) throws Exception {
         log.info("Ai Agent 装配操作 - ChatModelNode");
@@ -65,7 +68,7 @@ public class ChatModelNode extends AbstractArmorySupport {
 
     @Override
     public StrategyHandler<ArmoryCommandEntity, DefaultArmoryFactory.DynamicContext, AiAgentRegisterVO> get(ArmoryCommandEntity requestParameter, DefaultArmoryFactory.DynamicContext dynamicContext) throws Exception {
-        return defaultStrategyHandler;
+        return agnetNode;
     }
 
     private McpSyncClient createMcpSyncClient(AiAgnetConfigTableVO.Module.ChatModel.ToolMcp toolMcp) throws MalformedURLException {
